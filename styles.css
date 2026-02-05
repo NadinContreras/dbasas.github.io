@@ -1,0 +1,851 @@
+/* styles.css actualizado */
+
+/* Estilo general */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+  color: #333;
+   
+}
+
+/* Títulos */
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Login */
+.login-box {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-box img.login-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #e0f2f1;
+  padding: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 4px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-box input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.login-box button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-box button:hover {
+  background-color: #388e3c;
+  transform: scale(1.02);
+}
+
+.error-message {
+  color: red;
+  display: none;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background: none;
+}
+
+.form-group label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: white;
+  color: #777;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 12px;
+  color: #4CAF50;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+/* Botones generales */
+.btn, .dropbtn, .filterbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover, .dropbtn:hover, .filterbtn:hover {
+  background-color: #388e3c;
+}
+
+.row-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c;
+}
+
+/* Top bar y controles */
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.row-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.left-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.counter {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.dropdown, .filter {
+  position: relative;
+}
+
+.dropdown-content, .filter-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dropdown-content a, .filter-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover, .filter-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content,
+.filter:hover .filter-content {
+  display: block;
+}
+
+/* Tabla */
+.table-container {
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #eafaf1;
+}
+
+/* Input de búsqueda */
+input[type="text"], input[type="password"] {
+  padding: 5px;
+  width: 300px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Modo oscuro */
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode table,
+.dark-mode th,
+.dark-mode td {
+  background-color: #555;
+  color: white;
+  border-color: #777;
+}
+
+/* Enlaces de "Ver" carpeta */
+a.btn {
+  background-color: #2196F3;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+  background-color: #0b7dda;
+}
+
+/* Botones de la barra de acciones (Decretos, Resoluciones, Acuerdos) */
+
+.botones-acciones a.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* igual que los demás */
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.botones-acciones a.btn:hover {
+  background-color: #388e3c;
+}
+
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* deja espacio si hay ícono */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Etiquetas flotantes para los campos */
+.floating-label {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background: none;
+}
+
+.floating-label label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: white;
+  padding: 0 4px;
+  color: #777;
+  transition: 0.2s ease all;
+  pointer-events: none;
+}
+
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 10px;
+  font-size: 12px;
+  color: #4CAF50;
+}
+
+
+/* ver contraseña */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* espacio para el ícono */
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.password-wrapper i {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+
+.password-wrapper i:hover {
+  color: #333;
+}
+
+/* Selector de año*/
+.year-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.year-selector label {
+  font-weight: 600;
+  color: #333;
+}
+
+.year-selector select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+
+.year-selector select:hover,
+.year-selector select:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+/* Modal flotante */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Caja del modal */
+.modal-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título del modal */
+.modal-box h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+/* Texto */
+.modal-box p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Botón cerrar */
+.btn-cerrar {
+  background-color: #5db42a; /* verde tipo Tailwind */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cerrar:hover {
+  background-color: #c94d4d;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.btn-info {
+  background-color: #da514d;
+  color: white;
+  border: none;
+  border-radius: 6px; /* Rectangular con bordes suaves */
+  padding: 2px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  height: 24px;
+  vertical-align: middle;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.btn-info:hover {
+  background-color: #b6433e;
+}
+
+
+/* Encabezado principal elegante */
+.main-header {
+  background-color: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 1.4rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.main-header {
+  background-color: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 1.4rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.toolbar-wrapper {
+  background-color: #eafaf1;
+  padding: 1.2rem 2rem;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.search-bar input,
+.search-bar select {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: none;
+  padding: 6px 8px;
+}
+
+.total-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.total-inversion {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#btn-ver-grafico {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#btn-ver-grafico:hover {
+    background-color: #218838;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.total-container {
+  margin-top: 8px;
+  text-align: center;
+}
+.filtros-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.total-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.botones-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Reset general */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow: hidden; /* evita scroll lateral innecesario */
+}
+
+/* Header superior */
+.main-header {
+  background-color: #2e7d32;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 12px;
+  margin: 0;
+  border-radius: 0;
+  width: 100%;
+}
+
+/* Contenedor principal ocupa toda la pantalla */
+.layout {
+  display: flex;
+  height: calc(100vh - 50px); /* resta solo el header */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar fijo a la izquierda */
+.sidebar {
+  width: 140px;
+  min-width: 140px;
+  background-color: #2e7d32;
+  color: white;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+/* Botones del menú */
+.sidebar .btn,
+.sidebar .logout-btn,
+.sidebar a.btn {
+  width: 100%;
+  height: 45px;              /* mismo alto para todos */
+  background-color: #4caf50;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  
+  /* Centrado del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* quita variaciones por padding */
+  padding: 0;
+}
+
+.sidebar .btn:hover,
+.sidebar a.btn:hover {
+  background-color: #388e3c;
+}
+
+.sidebar .logout-btn {
+  background-color: #d32f2f;
+}
+.sidebar .logout-btn:hover {
+  background-color: #b71c1c;
+}
+
+
+
+.sidebar .btn:hover,
+.sidebar a.btn:hover {
+  background-color: #388e3c;
+}
+
+.sidebar .logout-btn {
+  background-color: #d32f2f;
+}
+.sidebar .logout-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Contenido principal ocupa todo lo demás */
+.main-content {
+  flex: 1;
+  background-color: white;
+  padding: 15px;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Ajustar buscador y filtros */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.search-bar input,
+.search-bar select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Tabla sin espacios sobrantes */
+.table-container {
+  margin-top: 10px;
+  width: 100%;
+}
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-container th,
+.table-container td {
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.subtitle {
+  font-size: 14px;   /* más pequeño */
+  font-weight: normal; /* sin negrilla */
+  margin: 0;          /* quita espacios extra de h3 */
+  color: #333;        /* opcional, un gris suave */
+}
+
+
+
+

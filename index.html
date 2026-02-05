@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BDD ASAS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts.js" defer></script>
+  <script src="funciones.js" defer></script>
+</head>
+<body>
+  <!-- LOGIN -->
+  <div id="login-section" class="login-box">
+    <img src="img/Logo_recortado.png" alt="Logo de la Alcaldía" class="login-logo">
+    <h2 class="title">Iniciar sesión</h2>
+    <form id="login-form">
+      <div class="floating-label">
+        <input type="text" id="username" name="username" placeholder=" " required autocomplete="username">
+        <label for="username">Usuario</label>
+      </div>
+
+      <div class="floating-label password-wrapper">
+        <input type="password" id="password" name="password" placeholder=" " required autocomplete="current-password">
+        <label for="password">Contraseña</label>
+        <i class="fa-solid fa-eye" id="toggle-password" onclick="togglePasswordVisibility(this)"></i>
+      </div>
+
+      <p id="login-error" class="error-message">Usuario o contraseña incorrectos.</p>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div id="content-section" style="display:none;">
+    <!-- Header -->
+    <header class="main-header">
+      ALCALDÍA DE SAN ANDRÉS DE SOTAVENTO
+    </header>
+
+    <div class="layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <button class="btn" onclick="restablecerBusqueda()">Restablecer</button>
+        <button class="btn" onclick="toggleDarkMode()">Modo Oscuro</button>
+        <a href="generador.html" target="_blank" class="btn">Agregar Contrato</a>
+        <button class="btn" onclick="exportarExcel()">Exportar a Excel</button>
+        <a href="https://drive.google.com/drive/folders/1i2QYKaiJzt5-8vJbL4ZYqAQr7S7jd6YQ?usp=drive_link" 
+           class="btn" target="_blank">Convenios</a>
+        <a href="https://drive.google.com/drive/folders/1NvdDacjMtjWlel_mW8zTUTvKa-Nw2-5G?usp=drive_link" 
+           class="btn" target="_blank">Decretos</a>
+        <a href="https://drive.google.com/drive/folders/1t_IOOnq3DcvguGCUMpUz__j_7R6Ph0ts?usp=drive_link" 
+           class="btn" target="_blank">Resoluciones</a>
+        <a href="https://drive.google.com/drive/folders/18FTjKCzeQKXHI1n_RnQgTw2zpFPIWOV2?usp=drive_link" 
+           class="btn" target="_blank">Acuerdos</a>
+        <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+      </aside>
+
+      <!-- Contenido -->
+      <main class="main-content">
+        <div class="toolbar-wrapper">
+          <div class="filtros-container">
+            <div class="search-bar">
+              <input type="text" id="buscador" onkeyup="buscar()" placeholder="Buscar contratos...">
+              <select id="anio-select" onchange="cambiarAnio()">
+                <option value="2026" selected>2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+              </select>
+              <select id="filtroDependencia" onchange="aplicarFiltros()">
+                <option value="">-- Filtrar por dependencia --</option>
+                <option value="Gobierno">Gobierno</option>
+                <option value="Planeación">Planeación</option>
+                <option value="Obras">Obras</option>
+                <option value="Educación">Educación</option>
+                <option value="Salud">Salud</option>
+                <option value="Umata">Umata</option>
+                <option value="Hacienda">Hacienda</option>
+              </select>
+              <button id="btn-ver-grafico" onclick="mostrarGrafico()">Ver gráfico de inversión</button>
+            </div>
+          </div>
+        </div>
+
+       <!-- <h3 class="subtitle">Mostrando contratación 202N</h3> -->
+
+        <div class="row-controls">
+          <div class="left-controls">
+            <button class="btn" id="botonTabla" onclick="toggleTabla()">Ocultar lista</button>
+            <button class="btn" id="botonOrden" onclick="ordenarPorNumero()">Cambiar orden</button>
+          </div>
+          <div class="right-controls">
+             <span class="subtitle">Mostrando contratación 2025</span>
+            <div class="counter" id="contador"></div>
+          </div>
+        </div>
+
+        <div id="contenedor-tabla" class="table-container"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modales -->
+  <div id="modal-observacion" class="modal" style="display:none;">
+    <div class="modal-box">
+      <h2>Observaciones</h2>
+      <p id="texto-observacion"></p>
+      <button class="btn-cerrar" onclick="cerrarObservacion()">Cerrar</button>
+    </div>
+  </div>
+
+  <div id="modal-grafico" class="modal" style="display:none;">
+    <div class="modal-box">
+      <h2>Inversión por dependencia</h2>
+      <canvas id="graficoDependencias" width="400" height="250"></canvas>
+      <button class="btn-cerrar" onclick="cerrarGrafico()">Cerrar</button>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
