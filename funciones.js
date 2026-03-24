@@ -180,11 +180,6 @@ function importarCSV() {
   alert("Función para importar CSV en desarrollo");
 }
 
-function exportarExcel() {
-  alert("Haz clic en aceptar para ver la tabla en Excel: ");
-  window.open("https://docs.google.com/spreadsheets/d/19xin3e6SJGwof33acfDwl9gDxW_x55LG/edit?usp=sharing&ouid=105713254063128352099&rtpof=true&sd=true", "_blank");
-}
-
 function toggleTabla() {
   var tabla = document.getElementById("tablaContratos");
   var boton = document.getElementById("botonTabla");
@@ -318,23 +313,29 @@ function cerrarObservacion() {
 
 //Funcion exportar excel
 function exportarExcel() {
-  const tabla = document.querySelector("table");
-  const filas = Array.from(tabla.querySelectorAll("tr"));
+  const tabla = document.getElementById("tablaContratos");
 
-  const columnasDeseadas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]; // índices de las columnas relevantes
+  if (!tabla) {
+    alert("La tabla aún no ha cargado");
+    return;
+  }
+
+  const filas = Array.from(tabla.querySelectorAll("tr"))
+    .filter(fila => fila.style.display !== "none"); // solo visibles
 
   const datos = filas.map(fila => {
     const celdas = Array.from(fila.querySelectorAll("th, td"));
-    return columnasDeseadas.map(i => celdas[i]?.innerText || "");
+    return celdas.map(td => td.innerText.trim());
   });
 
   const hoja = XLSX.utils.aoa_to_sheet(datos);
   const libro = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(libro, hoja, "Contratos");
 
-  XLSX.writeFile(libro, "Contratos_Alcaldia_2025.xlsx");
-}
+  const anio = document.getElementById("anio-select").value;
 
+  XLSX.writeFile(libro, `Contratos_${anio}.xlsx`);
+}
 
 
 function calcularTiempoTrabajado(inicioStr, finStr) {
